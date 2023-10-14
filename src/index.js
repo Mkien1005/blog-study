@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const app = express();
 const port = 3000;
 app.use(morgan());
+app.use(express.static(path.join(__dirname, "public")));
 //Template engine
 //dòng dưới nghĩa là: app đang sử dụng engine đặt tên là handlebars
 app.engine(
