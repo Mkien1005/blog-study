@@ -1,11 +1,3 @@
-@import "variable";
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
-    body {
-        background-color: $red;
-    }
+.search-form {
+    padding: 0 200px 0 200px;
 }
