@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const handlebars = require("express-handlebars");
 const morgan = require("morgan");
+const NewsController = require("./app/controllers/NewsController");
+const route = require("./routes");
 const app = express();
 const port = 3000;
 // app.use(morgan());
@@ -24,19 +26,8 @@ app.engine(
 app.set("view engine", "hbs");
 //set đường dẫn tới views
 app.set("views", path.join(__dirname, "resources/views"));
-app.get("/", (req, res) => {
-  res.render("home");
-});
-app.get("/news", (req, res) => {
-  res.render("news");
-});
-app.get("/search", (req, res) => {
-  res.render("search");
-});
-app.post("/search", (req, res) => {
-  console.log(req.body);
-  res.send("");
-});
+route(app);
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
