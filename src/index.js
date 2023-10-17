@@ -2,8 +2,10 @@ const express = require("express");
 const path = require("path");
 const handlebars = require("express-handlebars");
 const morgan = require("morgan");
-const NewsController = require("./app/controllers/NewsController");
 const route = require("./routes");
+const db = require("./config/db");
+//connect db
+db.connect();
 const app = express();
 const port = 3000;
 // app.use(morgan());
@@ -26,6 +28,7 @@ app.engine(
 app.set("view engine", "hbs");
 //set đường dẫn tới views
 app.set("views", path.join(__dirname, "resources/views"));
+//Xét các route của app trong tệp routes
 route(app);
 
 app.listen(port, () => {
