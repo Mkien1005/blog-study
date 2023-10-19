@@ -27,10 +27,10 @@ app.engine(
 //set view engine là handlebars
 app.set("view engine", "hbs");
 //set đường dẫn tới views
-app.set("views", path.join(__dirname, "resources/views"));
+app.set("views", path.join(__dirname, "resources", "views"));
 //Xét các route của app trong tệp routes
 route(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
