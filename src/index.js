@@ -1,12 +1,15 @@
 const express = require("express");
 const path = require("path");
 const handlebars = require("express-handlebars");
+const methodOverride = require("method-override");
 const morgan = require("morgan");
 const route = require("./routes");
 const db = require("./config/db");
 //connect db
 db.connect();
 const app = express();
+//ghi thêm cho app phương thức mình tự tạo
+app.use(methodOverride("_method"));
 const port = 3000;
 // app.use(morgan());
 //đưa thư mục public lên có thể xem đc phía web
@@ -22,6 +25,9 @@ app.engine(
   "hbs",
   handlebars.engine({
     extname: ".hbs",
+    helpers: {
+      sum: (a, b) => a + b,
+    },
   })
 );
 //set view engine là handlebars
